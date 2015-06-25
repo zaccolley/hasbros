@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
 
         start.removeAttribute('disabled');
 
-        leaderboards.innerHTML += '<tr><td>' + msg.player + '</td><td>' + msg.score + '</td></tr>';
+        leaderboards.innerHTML += '<div><span>' + msg.player + '</span><span>' + msg.score + '</span></div>';
     });
 
 });
