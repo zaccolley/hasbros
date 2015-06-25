@@ -7,10 +7,10 @@ var http = require('http'),
     socket = require('socket.io'),
 
     scheduler = require('./scheduler'),
-    // Input = require('./input'),
+    Input = require('./input'),
 
     app = express(),
-    // input = new Input(),
+    input = new Input(),
 
     game = {
         inputs: [
@@ -52,8 +52,8 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-// input.on('ready', function() {
-//     input.on('action', function(data) {
-//         game.currentUserEvent = data;
-//     });
-// });
+input.on('ready', function() {
+    input.on('action', function(data) {
+        game.currentUserEvent = data;
+    });
+});
