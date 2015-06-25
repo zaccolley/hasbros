@@ -1,54 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="utf-8" />
+        <title>Yay</title>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-        window.addEventListener('load', function () {
-            var socket = io();
-
-            var msgs = document.getElementById('msgs');
-            var task = document.getElementById('task');
-            var status = document.getElementById('status');
-            var leaderboards = document.getElementById('leaderboards');
-            var name = document.getElementById('name');
-            var start = document.getElementById('start');
-            var timer = document.getElementById('timer');
-            var failed = document.getElementById('failed');
-
-            start.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                socket.emit('start', name.value);
-                // leaderboards.innerHTML += '<tr><td>' + name.value + '</td><td>0</td></tr>';
-
-                start.disabled = 'disabled';
-            });
-
-            socket.on('success', function (msg) {
-                msg = JSON.parse(msg);
-                task.innerHTML = "";
-                timer.innerHTML = "";
-            });
-
-            socket.on('event', function (msg) {
-                msg = JSON.parse(msg);
-
-                task.innerHTML = msg.task;
-                timer.innerHTML = msg.timer;
-            });
-
-            socket.on('fail', function (msg) {
-                msg = JSON.parse(msg);
-
-                failed.innerHTML = msg.msg;
-
-                start.removeAttribute('disabled');
-
-                leaderboards.innerHTML += '<tr><td>' + msg.player + '</td><td>' + msg.score + '</td></tr>';
-            });
-        });
-        </script>
+        <script src="app.js"></script>
+        <script src="client.js"></script>
+        <script src="global.js"></script>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css' /> -->
+        <link href="client.css" rel='stylesheet' type='text/css' />
     </head>
-    <body>
+
+    <body style='-moz-user-select: none;-webkit-user-select: none;' onselectstart='return false;'> 
         Enter Name: <input type="text" id="name" /> <input type="submit" id="start" value="Start!" />
         <br /><br />
         <section id="status">
@@ -65,5 +28,10 @@
                 <th>Score</th>
             </tr>
         </table>
+        <div id="test"></div>
+
+        <div class="wrapper">
+            <canvas id="myCanvas"></canvas>
+        </div>
     </body>
 </html>

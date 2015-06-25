@@ -1,0 +1,7 @@
+body { background-color:#111; overflow: hidden; font-family: 'Rock Salt', Arial;}
+
+canvas {margin-top: 100px;}
+
+div.wrapper {height:100%; overflow:hidden;}
+
+audio {display:block; margin:auto; margin-top: 900px;}
