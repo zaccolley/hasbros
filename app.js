@@ -1,18 +1,12 @@
 var Input = require('./input.js'),
     input = new Input();
 
-input.on('bev', function() {
-    console.log('bev');
-});
+input.on('ready', function() {
 
-input.on('twist', function() {
-    console.log('twist');
-});
+    console.log('ready');
 
-input.on('press', function() {
-    console.log('press');
-});
+    input.on('action', function(data) {
+        console.log(data);
+    });
 
-input.on('flick', function() {
-    console.log('flick');
 });

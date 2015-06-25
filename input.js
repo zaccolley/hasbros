@@ -14,6 +14,9 @@ function Input(){
 
     boards.on("ready", function() {
 
+        // i think we're ready
+        _self.emit('ready');
+
         var boardA = this['0'],
             boardB = this['1'];
 
@@ -93,12 +96,12 @@ function Input(){
 
             // console.log(liters, " Liters");
 
-            if( ( prevLiters + 0.05 ) <= liters ){
+            if( ( prevLiters + 0.01 ) <= liters ){
                 // console.log("flowmeter change");
-                _self.emit('bev');
+                _self.emit('action', 'bev');
+                prevLiters = liters;
             }
 
-            prevLiters = liters;
 
         }
 
@@ -111,32 +114,48 @@ function Input(){
 
             if( (prevPot - 2) > currentPot || (prevPot + 2) < currentPot ){
                 // console.log("pot change", currentPot);
-                _self.emit('twist');
+                _self.emit('action', 'twist');
             }
 
             prevPot = currentPot;
 
         });
 
+        var prevJoy = 0,
+            currentJoy = 0;
+
         // when the joystick changes
         joystick.on("change", function() {
             // console.log("joystick change", "  x: ", this.x, " y: ", this.y);
-            _self.emit('flick');
+
+            // if it's 0, 0 it's likely it hasnt been flicked
+            var noMovement = (this.x !== 0 && this.y !== 0);
+
+            if( noMovement ){
+
+                _self.emit('action', 'flick');
+
+            }
+
         });
 
         // "down" the button is pressed
         button.on("down", function() {
             // console.log("button change");
-            _self.emit('press');
+            _self.emit('action', 'press');
         });
 
         // -- input cycle
 
-        // calculate flow
+        // limit some of the inputs
+
         setInterval(function(){
+
+            // calculate flow
             calcFlow(function(){
                 displayFlow();
             });
+
         }, 100);
 
     });
