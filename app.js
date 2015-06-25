@@ -24,7 +24,7 @@ var http = require('http'),
         leaderboards: [],
         currentPlayer: '',
         currentScore: 0,
-        currentUserEvent = ''
+        currentUserEvent: ''
     };
 
 app.get('/', function (req, res) {
