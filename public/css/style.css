@@ -5,55 +5,31 @@
 }
 
 body{
-    background-color: #111;
+    background-color: white;
     overflow: hidden;
     font-family: sans-serif;
 }
 
-.panel{
-    height: 100vh;
-    width: 100%;
-}
-
-.panel--intro{
-    overflow: hidden;
-    position: absolute;
-    z-index: 999;
-    height: 100vh;
-
-    transform: translateY(-100%);
-
-    animation: introHide 5s alternate ease-in-out;
-
-    opacity: .9;
-}
-
-@-webkit-keyframes introHide{
-    25%{
-        transform: translateY(125%);
-    }
-    50%{
-        transform: translateY(0%);
-    }
-}
-
 .logo{
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
     display: block;
     width: 80%;
-    height: 80vh;
     margin: 0 auto;
 
     text-indent: -9999px;
-    background: url('../resources/logo.svg');
+    background: url('../img/logo.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
+
+    transform: scale(.5) translateY(-200%);
 
     animation: bob 2s alternate;
 }
 
 @-webkit-keyframes bob{
-    50%{ transform: scale(.5) translateY(2.5%) rotate(1deg); }
+    50%{ transform: translateY(0%); }
 }
 
 .name{
@@ -69,7 +45,7 @@ body{
 
     font-size: 2em;
     border: 0;
-    background: 0;
+    background: white;
     height: 2em;
 }
 
@@ -82,8 +58,7 @@ body{
 .name__button{
     width: 20%;
 
-    color: white;
-    background: rgba(0,0,0,.25);
+    color: rgba(0,0,0,.25);
 }
 
 .name__button:hover{
@@ -91,7 +66,7 @@ body{
     cursor: pointer;
 }
 
-.task{
+.action{
     padding: 1em;
 
     font-size: 8em;
@@ -99,33 +74,35 @@ body{
 
     background: black;
     color: white;
-    border-radius: 5px;
 
 }
 
-.task--twist{
+.action--fade{
+    animation: actionOut 3s;
+}
+
+.action--twist{
     background: blue;
 }
 
-.task--press{
+.action--press{
     background: green;
 }
 
-.task--flick{
-    background: red;
+.action--flick{
+    background: yellow;
 }
 
-.task--bev{
+.action--bev{
     background: orange;
 }
 
-@-webkit-keyframes taskBob{
-    25%{ transform: scale(.9) rotate(5deg); }
-    75%{ transform: scale(1.1) rotate(-5deg); }
+.action--failed{
+    background: red;
 }
 
-canvas {margin-top: 100px;}
-
-div.wrapper {height:100%; overflow:hidden;}
-
-audio {display:block; margin:auto; margin-top: 900px;}
+@-webkit-keyframes actionOut{
+    to{
+        opacity: 0;
+    }
+}
