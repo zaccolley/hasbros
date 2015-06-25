@@ -1,0 +1,124 @@
+*::before, *, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.panel{
+    height: 100vh;
+    width: 100%;
+}
+
+.panel--intro{
+    overflow: hidden;
+    position: absolute;
+    z-index: 999;
+    height: 100vh;
+
+    transform: translateY(-100%);
+
+    animation: introHide 5s alternate ease-in-out;
+
+    opacity: .9;
+}
+
+@-webkit-keyframes introHide{
+    25%{
+        transform: translateY(125%);
+    }
+    50%{
+        transform: translateY(0%);
+    }
+}
+
+.logo{
+    display: block;
+    width: 80%;
+    height: 80vh;
+    margin: 0 auto;
+
+    text-indent: -9999px;
+    background: url('../resources/logo.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+
+    animation: bob 2s alternate;
+}
+
+@-webkit-keyframes bob{
+    50%{ transform: scale(.5) translateY(2.5%) rotate(1deg); }
+}
+
+.name{
+    width: 80%;
+    margin: 20px auto;
+
+    overflow: hidden; /* clearfix */
+}
+
+.name__input,
+.name__button{
+    float: left;
+
+    font-size: 2em;
+    border: 0;
+    background: 0;
+    height: 2em;
+}
+
+.name__input{
+    width: 80%;
+    border: 2px solid rgba(0,0,0,.25);
+    padding: .5em;
+}
+
+.name__button{
+    width: 20%;
+
+    color: white;
+    background: rgba(0,0,0,.25);
+}
+
+.name__button:hover{
+    opacity: .9;
+    cursor: pointer;
+}
+
+.task{
+    padding: 1em;
+
+    font-size: 8em;
+    text-align: center;
+
+    background: black;
+    color: white;
+    border-radius: 5px;
+
+}
+
+.task--twist{
+    background: blue;
+}
+
+.task--press{
+    background: green;
+}
+
+.task--flick{
+    background: red;
+}
+
+.task--bev{
+    background: orange;
+}
+
+@-webkit-keyframes taskBob{
+    25%{ transform: scale(.9) rotate(5deg); }
+    75%{ transform: scale(1.1) rotate(-5deg); }
+}

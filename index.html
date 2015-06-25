@@ -1,5 +1,36 @@
 <html>
     <head>
+        <title>Bev It! by Hasbros</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <div class="panel panel--intro">
+            <h1 class="logo">Bev It!</h1>
+        </div>
+
+        <div class="name">
+            <input class="name__input" placeholder="Enter your name" type="text" id="name" />
+            <input class="name__button" type="submit" id="start" value="Start!" />
+        </div>
+
+
+        <section id="status">
+            <section class="task" id="task"></section>
+            TTL: <section id="timer"></section>
+        </section>
+
+        <section id="failed"></section>
+
+        <br />Leaderboards:
+        <table id="leaderboards">
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </table>
+
+
         <script src="/socket.io/socket.io.js"></script>
         <script>
         window.addEventListener('load', function () {
@@ -47,23 +78,5 @@
             });
         });
         </script>
-    </head>
-    <body>
-        Enter Name: <input type="text" id="name" /> <input type="submit" id="start" value="Start!" />
-        <br /><br />
-        <section id="status">
-            Task: <section id="task"></section>
-            TTL: <section id="timer"></section>
-        </section>
-
-        <section id="failed"></section>
-
-        <br />Leaderboards:
-        <table id="leaderboards">
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-        </table>
     </body>
 </html>

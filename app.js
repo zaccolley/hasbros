@@ -7,10 +7,10 @@ var http = require('http'),
     socket = require('socket.io'),
 
     scheduler = require('./scheduler'),
-    Input = require('./input'),
+    // Input = require('./input'),
 
     app = express(),
-    input = new Input(),
+    // input = new Input(),
 
     game = {
         inputs: [
@@ -31,8 +31,11 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.use(express.static('public'));
+
 var server = http.createServer(app);
 server.listen(5000);
+
 
 console.log('Server listening on 5000');
 
@@ -47,8 +50,8 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-input.on('ready', function() {
-    input.on('action', function(data) {
-        game.currentUserEvent = data;
-    });
-});
+// input.on('ready', function() {
+//     input.on('action', function(data) {
+//         game.currentUserEvent = data;
+//     });
+// });
