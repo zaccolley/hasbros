@@ -1,4 +1,4 @@
-module.exports = function schedule(round) {
+module.exports = function schedule(game, io, round) {
     var roundNo = round === undefined ? 1 : round,
         roundTime = game.roundTime,
         complexity = roundNo / game.roundDifInc + 1;
@@ -24,7 +24,7 @@ module.exports = function schedule(round) {
 
             io.emit('success', JSON.stringify(success));
 
-            schedule(round + 1);
+            schedule(game, io, round + 1);
         } else {
             var failure = {
                 msg: 'You failed!',

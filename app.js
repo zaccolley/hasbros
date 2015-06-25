@@ -4,13 +4,11 @@ var http = require('http'),
     path = require('path'),
 
     express = require('express'),
-    five = require('johnny-five'),
     socket = require('socket.io'),
 
     scheduler = require('./scheduler'),
     Input = require('./input'),
 
-    board = new five.Board(),
     app = express(),
     input = new Input(),
 
@@ -37,6 +35,8 @@ app.get('/', function (req, res) {
 var server = http.createServer(app);
 server.listen(5000);
 
+console.log('Server listening on 5000');
+
 var io = socket.listen(server);
 
 io.sockets.on('connection', function (socket) {
@@ -44,14 +44,12 @@ io.sockets.on('connection', function (socket) {
         game.leaderboards.msg = 0;
         game.currentPlayer = msg;
 
-        scheduler();
+        scheduler(game, io);
     });
 });
 
-board.on('ready', function() {
-    input.on('ready', function() {
-        input.on('action', function(data) {
-            userEvent = data;
-        });
+input.on('ready', function() {
+    input.on('action', function(data) {
+        userEvent = data;
     });
 });
