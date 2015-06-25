@@ -23,10 +23,9 @@ var http = require('http'),
         roundDifInc: 2,
         leaderboards: [],
         currentPlayer: '',
-        currentScore: 0
-    },
-
-    userEvent = '';
+        currentScore: 0,
+        currentUserEvent = ''
+    };
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -50,6 +49,6 @@ io.sockets.on('connection', function (socket) {
 
 input.on('ready', function() {
     input.on('action', function(data) {
-        userEvent = data;
+        game.currentUserEvent = data;
     });
 });

@@ -4,7 +4,7 @@ module.exports = function schedule(game, io, round) {
         complexity = roundNo / game.roundDifInc + 1;
 
     roundTime -= roundNo % game.roundDifInc === 0 ? 0.1 * complexity : 0;
-    userEvent = '';
+    game.currentUserEvent = '';
 
     var task = {
         task: game.inputs[Math.floor(Math.random() * game.inputs.length)],
@@ -14,7 +14,7 @@ module.exports = function schedule(game, io, round) {
     io.emit('event', JSON.stringify(task));
 
     setTimeout(function () {
-        if (userEvent === task.task) {
+        if (game.currentUserEvent === task.task) {
             game.currentScore += 20;
 
             var success = {
