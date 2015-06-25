@@ -72,9 +72,9 @@ body{
     font-size: 8em;
     text-align: center;
 
-    background: black;
+    background: center no-repeat;
+    background-size: contain;
     color: white;
-
 }
 
 .action--fade{
@@ -82,19 +82,27 @@ body{
 }
 
 .action--twist{
-    background: blue;
+    text-indent: -9999px;
+    background-color: #00267d;
+    background-image: url('../img/twist.png');
 }
 
 .action--press{
-    background: green;
+    text-indent: -9999px;
+    background-color: #c07a00;
+    background-image: url('../img/press.png');
 }
 
 .action--flick{
-    background: yellow;
+    text-indent: -9999px;
+    background-color: #00c005;
+    background-image: url('../img/flick.png');
 }
 
 .action--bev{
-    background: orange;
+    text-indent: -9999px;
+    background-color: #ff00a2;
+    background-image: url('../img/blow.png');
 }
 
 .action--failed{
@@ -102,6 +110,15 @@ body{
 }
 
 @-webkit-keyframes actionOut{
+    10%{
+        transform: scale(1.1);
+    }
+    15%{
+        transform: scale(1);
+    }
+    75%{
+        opacity: 1;
+    }
     to{
         opacity: 0;
     }

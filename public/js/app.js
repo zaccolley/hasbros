@@ -48,7 +48,7 @@ window.addEventListener('load', function () {
 
 function playSound(action){
     var sfx = document.createElement('audio');
-    sfx.setAttribute('src', 'resources/'+action+'.mp3');
+    sfx.setAttribute('src', 'sounds/'+action+'.mp3');
     sfx.setAttribute('type', 'audio/mp3');
     sfx.volume = 1;
     sfx.play();
